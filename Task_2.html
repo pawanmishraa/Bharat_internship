@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter
+        </h1>
+        <div class="input-group">
+            <input type="number" id="celsiusInput" placeholder="Enter Celsius temperature">
+            <button onclick="playGame()">Convert</button>
+        </div>
+        <div class="result" id="result">
+            <p><span id="resultText"></span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    function playGame() {
+    const celsiusInput = document.getElementById('celsiusInput').value;
+    if (celsiusInput === '') {
+        alert('Please enter a temperature in Celsius.');
+        return;
+    }
+
+    const celsius = parseFloat(celsiusInput);
+    const fahrenheit = (celsius * 9/5) + 32;
+
+    const resultText = `${celsius} degrees Celsius is equal to ${fahrenheit.toFixed(2)} degrees Fahrenheit.`;
+    document.getElementById('resultText').textContent = resultText;
+
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+
+    // Add a fade-in animation
+    result.style.animation = 'fadeIn 1s';
+
+    setTimeout(() => {
+        result.style.animation = '';
+    }, 1000);
+}
+
+</script>
